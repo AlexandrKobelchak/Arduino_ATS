@@ -15,6 +15,7 @@
 volatile bool g_bLedFlag = false;
 volatile bool g_bActionFlag = false;
 const int g_time_value = 34285; //Preload timer value (34285 for 0.5 seconds)
+LiquidCrystal_I2C lcd(0x27 /*0x3F*/, 20, 4);
 
 void showTime();
 
@@ -43,13 +44,21 @@ void setTimerInterrupt() {
     sei();                    //разрешаем прерывания
 }
 
+extern DS3231 g_clock;
+
 // the setup function runs once when you press reset or power the board
 void setup() {
+   
 
+    lcd.init(); 
     setTimerInterrupt();
     sleep_enable();
     Serial.begin(9600);
     DDRB |= (1 << 5);//= 0xFF;
+
+    lcd.setCursor(0, 0); 
+    lcd.print("LCD");
+    
 }
 
 // the loop function runs over and over again until power down or reset

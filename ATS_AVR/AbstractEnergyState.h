@@ -74,7 +74,7 @@ public:
 
 };
 
-static class EnergyStateUnit
+class EnergyStateUnit
 {
 private:
 	static AbstractEnergyState* states[];
