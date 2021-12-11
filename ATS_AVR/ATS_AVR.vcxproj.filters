@@ -27,12 +27,18 @@
     <ClInclude Include="AbstractEnergyState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Plot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AbstractEnergyState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Plot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

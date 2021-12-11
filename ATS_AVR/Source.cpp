@@ -6,8 +6,11 @@
 #include <Arduino.h>
 #include <WString.h>
 
+#include "Plot.h"
+
 extern volatile bool g_bLedFlag;
 extern LiquidCrystal_I2C  lcd;
+extern int g_lcdWidth;
 DS3231 g_clock;
 
 void showTime() {
@@ -36,11 +39,27 @@ void showTime() {
     str.concat(seconds);
 
     lcd.setCursor(0, 0);
+    lcd.setBacklight(255);
     lcd.print(str);
+
+    int n = (g_lcdWidth == 20 ? 20 : 15);
+    if (seconds % n==0) {
+        lcd.setCursor(0, 1);
+        lcd.print("                    ");
+    }
+    lcd.setCursor(0, 1);
+    for (int i = 0; i < seconds % n; ++i) {
+        
+        lcd.setCursor(i % n, 1);
+        lcd.write(0);
+    }
 
 
     lcd.setCursor(10, 0);
-    lcd.print("/^\\");
+    if(minutes % 2) 
+        lcd.print("DIESEL");
+    else 
+        lcd.print("EXTERN");
 
     //Serial.print(g_clock.getYear(), DEC);
     //Serial.print("-");

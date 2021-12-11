@@ -117,10 +117,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractEnergyState.h" />
+    <ClInclude Include="Plot.h" />
     <ClInclude Include="__vm\.ATS_AVR.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstractEnergyState.cpp" />
+    <ClCompile Include="Plot.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

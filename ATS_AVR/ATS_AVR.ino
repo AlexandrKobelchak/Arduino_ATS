@@ -11,11 +11,18 @@
 #include <avr/sleep.h>
 #include <Arduino.h>
 
+#include "Plot.h"
+
+int g_lcdWidth = 16;
+const int g_lcgHeight = 2;
+
+const int g_time_value = 34285; //Preload timer value (34285 for 0.5 seconds)
 
 volatile bool g_bLedFlag = false;
 volatile bool g_bActionFlag = false;
-const int g_time_value = 34285; //Preload timer value (34285 for 0.5 seconds)
-LiquidCrystal_I2C lcd(0x27 /*0x3F*/, 20, 4);
+
+
+LiquidCrystal_I2C lcd(0x27 /*0x3F*/, g_lcdWidth, g_lcgHeight);
 
 void showTime();
 
@@ -47,18 +54,14 @@ void setTimerInterrupt() {
 extern DS3231 g_clock;
 
 // the setup function runs once when you press reset or power the board
-void setup() {
-   
+void setup() {   
 
     lcd.init(); 
+    void initPlot();
     setTimerInterrupt();
     sleep_enable();
     Serial.begin(9600);
     DDRB |= (1 << 5);//= 0xFF;
-
-    lcd.setCursor(0, 0); 
-    lcd.print("LCD");
-    
 }
 
 // the loop function runs over and over again until power down or reset
