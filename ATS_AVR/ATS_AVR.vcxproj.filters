@@ -24,10 +24,13 @@
     <ClInclude Include="__vm\.ATS_AVR.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AbstractEnergyState.h">
+    <ClInclude Include="EnergyState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Plot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,7 +38,7 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AbstractEnergyState.cpp">
+    <ClCompile Include="EnergyState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Plot.cpp">

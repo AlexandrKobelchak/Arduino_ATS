@@ -1,6 +1,6 @@
 #pragma once
 
-enum energyState { ENERGY_LINE, GENERATOR_STARTING, ENERGY_GENERATOR, ERROR_STATE };
+enum energyState { EXTERN, STARTING, DIESEL, ERROR };
 
 class AbstractEnergyState
 {
@@ -84,10 +84,4 @@ public:
 	{
 		return *(states[(int)state]);
 	}
-};
-
-AbstractEnergyState* EnergyStateUnit::states[] = {
-		new EnergyLineState,
-		new GeneratorState,
-		new ErrorState 
 };

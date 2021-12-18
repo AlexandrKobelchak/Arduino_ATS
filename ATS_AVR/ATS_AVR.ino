@@ -4,13 +4,15 @@
  Author:	kobel
 */
 
+#include <Adafruit_MCP23008.h>
 #include <LiquidCrystal_I2C.h>
 #include <DS3231.h>
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <avr/sleep.h>
 #include <Arduino.h>
-
+#include "Source.h"
+#include "EnergyState.h"
 #include "Plot.h"
 
 int g_lcdWidth = 16;
@@ -23,9 +25,8 @@ volatile bool g_bActionFlag = false;
 
 
 LiquidCrystal_I2C lcd(0x27 /*0x3F*/, g_lcdWidth, g_lcgHeight);
-
-void showTime();
-
+DS3231 g_clock;
+Adafruit_MCP23008 g_CommandBlock;
 
 // процедура обработки прерывания переполнения счетчика
 ISR(TIMER1_OVF_vect)         
@@ -48,19 +49,24 @@ void setTimerInterrupt() {
     TCNT1 = g_time_value;     // set preload timer
     TCCR1B |= (1 << CS12);    // 256 prescaler (коэффициент деления предделителя)
     TIMSK1 |= (1 << TOIE1);   // enable timer overflow interrupt ISR (разрешаем вызов процедуры обработки прерывания переполнения счетчика)
-    sei();                    //разрешаем прерывания
+    sei();                    // разрешаем прерывания
 }
 
-extern DS3231 g_clock;
+
 
 // the setup function runs once when you press reset or power the board
 void setup() {   
+    g_CommandBlock.begin(0);      // use default address 0
+    g_CommandBlock.pinMode(0, OUTPUT);
+    g_CommandBlock.pinMode(1, OUTPUT);
+    g_CommandBlock.pinMode(2, OUTPUT);
+    g_CommandBlock.pinMode(3, OUTPUT);
 
-    lcd.init(); 
-    void initPlot();
+    initLcd();
+
     setTimerInterrupt();
     sleep_enable();
-    Serial.begin(9600);
+    //Serial.begin(9600);
     DDRB |= (1 << 5);//= 0xFF;
 }
 
@@ -69,17 +75,33 @@ void loop() {
   
     sleep_cpu();
 
+    static int mode = 0;
+
     if (g_bActionFlag) {
         
         g_bActionFlag = false;
         
         showTime();
+        showProgress();
+        showEnergyState(DIESEL);
 
         //blink led:
         if (g_bLedFlag)
             PORTB |= (1 << 5);
         else
             PORTB &= ~(1 << 5);
+  
+        static int counter = 0;
+        if (counter++ == 3) {
+            for (int i = 0; i < 4; ++i) {
+                g_CommandBlock.digitalWrite(i, 0);
+            }
+            g_CommandBlock.digitalWrite(mode++, 1);
+            if (mode == 4) mode = 0;
+            
+            counter = 0;
+        }
+      
     }
 }
 
