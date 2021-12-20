@@ -10,6 +10,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <avr/sleep.h>
+#include <avr/wdt.h>
 #include <Arduino.h>
 #include "Source.h"
 #include "EnergyState.h"
@@ -68,12 +69,15 @@ void setup() {
     sleep_enable();
     //Serial.begin(9600);
     DDRB |= (1 << 5);//= 0xFF;
+
+    wdt_enable(WDTO_2S); // Сторожевой таймер настроен на таймаут в 2 секунды
 }
 
 // the loop function runs over and over again until power down or reset
 void loop() {
   
     sleep_cpu();
+    wdt_reset(); // сбрасываем сторожевой таймер
 
     static int mode = 0;
 
