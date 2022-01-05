@@ -1,10 +1,7 @@
 #include <LiquidCrystal_I2C.h>
 #include <DS3231.h>
 #include <avr/io.h>
-#include <avr/interrupt.h>
-#include <avr/sleep.h>
-#include <Arduino.h>
-#include <WString.h>
+#include "stdafx.h"
 
 #include "Plot.h"
 #include "EnergyState.h"
@@ -13,7 +10,25 @@ extern volatile bool g_bLedFlag;
 extern  LiquidCrystal_I2C  lcd;
 extern int g_lcdWidth;
 extern DS3231 g_clock;
+extern Adafruit_MCP23008 g_CommandBlock;
 
+void blinkLed() {
+
+    //blink led:
+    if (g_bLedFlag)
+        PORTB |= (1 << 5);
+    else
+        PORTB &= ~(1 << 5);
+}
+
+void initCommandBlock() {
+
+    g_CommandBlock.begin(0);      // use default address 0
+    g_CommandBlock.pinMode(0, OUTPUT);
+    g_CommandBlock.pinMode(1, OUTPUT);
+    g_CommandBlock.pinMode(2, OUTPUT);
+    g_CommandBlock.pinMode(3, OUTPUT);
+}
 
 void initLcd() {
     

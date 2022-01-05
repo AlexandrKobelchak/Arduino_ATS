@@ -6,3 +6,5 @@ void showEnergyState(energyState state);
 void showTime();
 void showProgress();
 void showAnimation();
+void blinkLed();
+void initCommandBlock();

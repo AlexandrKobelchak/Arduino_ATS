@@ -1,17 +1,10 @@
 /*
  Name:		ATS_AVR.ino
  Created:	12/10/2021 10:22:21 AM
- Author:	kobel
+ Author:	Alexandr Kobelchak
 */
 
-#include <Adafruit_MCP23008.h>
-#include <LiquidCrystal_I2C.h>
-#include <DS3231.h>
-#include <avr/io.h>
-#include <avr/interrupt.h>
-#include <avr/sleep.h>
-#include <avr/wdt.h>
-#include <Arduino.h>
+#include "stdafx.h"
 #include "Source.h"
 #include "EnergyState.h"
 #include "Plot.h"
@@ -54,46 +47,35 @@ void setTimerInterrupt() {
 }
 
 
-
 // the setup function runs once when you press reset or power the board
 void setup() {   
-    g_CommandBlock.begin(0);      // use default address 0
-    g_CommandBlock.pinMode(0, OUTPUT);
-    g_CommandBlock.pinMode(1, OUTPUT);
-    g_CommandBlock.pinMode(2, OUTPUT);
-    g_CommandBlock.pinMode(3, OUTPUT);
 
     initLcd();
-
+    initCommandBlock();
     setTimerInterrupt();
-    sleep_enable();
-    //Serial.begin(9600);
+    sleep_enable();    
+    //Init LED 
     DDRB |= (1 << 5);//= 0xFF;
-
     wdt_enable(WDTO_2S); // Сторожевой таймер настроен на таймаут в 2 секунды
+    //Serial.begin(9600);
 }
 
 // the loop function runs over and over again until power down or reset
 void loop() {
   
     sleep_cpu();
-    wdt_reset(); // сбрасываем сторожевой таймер
-
     static int mode = 0;
 
     if (g_bActionFlag) {
         
+        wdt_reset(); // сбрасываем сторожевой таймер
         g_bActionFlag = false;
         
         showTime();
         showProgress();
         showEnergyState(DIESEL);
 
-        //blink led:
-        if (g_bLedFlag)
-            PORTB |= (1 << 5);
-        else
-            PORTB &= ~(1 << 5);
+        blinkLed();
   
         static int counter = 0;
         if (counter++ == 3) {

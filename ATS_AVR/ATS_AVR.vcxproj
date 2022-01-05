@@ -119,12 +119,14 @@
     <ClInclude Include="EnergyState.h" />
     <ClInclude Include="Plot.h" />
     <ClInclude Include="Source.h" />
+    <ClInclude Include="stdafx.h" />
     <ClInclude Include="__vm\.ATS_AVR.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EnergyState.cpp" />
     <ClCompile Include="Plot.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
