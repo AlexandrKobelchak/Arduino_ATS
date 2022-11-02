@@ -1,9 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31727.386
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ATS_AVR", "ATS_AVR.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Adafruit-MCP23017-Arduino-Library-master-2.2.0", "..\..\..\Users\Alexandr\Documents\Arduino\libraries\Adafruit-MCP23017-Arduino-Library-master\Adafruit-MCP23017-Arduino-Library-master-2.2.0.vcxitems", "{20F2DEF9-B443-4047-9FF4-1D36F9BD4EE8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Adafruit_BME280_Library-2.2.2", "..\..\..\Users\Alexandr\Documents\Arduino\libraries\Adafruit_BME280_Library\Adafruit_BME280_Library-2.2.2.vcxitems", "{D4C840CE-FDB3-4797-AA74-B3CCF3607BA2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LiquidCrystal_I2C-1.1.2-1.1.2", "..\..\..\Users\Alexandr\Documents\Arduino\libraries\LiquidCrystal_I2C-1.1.2\LiquidCrystal_I2C-1.1.2-1.1.2.vcxitems", "{889EFDD8-A0E5-4DA1-B7DE-BE078AB4F7DB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DS3231-1.1.0-1.1.0", "..\..\..\Users\Alexandr\Documents\Arduino\libraries\DS3231-1.1.0\DS3231-1.1.0-1.1.0.vcxitems", "{9D0F9427-2E7B-4D54-AC4D-4EB561E8572B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Adafruit_MCP23008_library-2.1.0-2.1.0", "..\..\..\Users\Alexandr\Documents\Arduino\libraries\Adafruit_MCP23008_library-2.1.0\Adafruit_MCP23008_library-2.1.0-2.1.0.vcxitems", "{91073377-FE92-4CB9-8EB1-B34C4CF6A6BF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Adafruit_Unified_Sensor-1.1.6", "..\..\..\Users\Alexandr\Documents\Arduino\libraries\Adafruit_Unified_Sensor\Adafruit_Unified_Sensor-1.1.6.vcxitems", "{7531E745-115F-4733-AD1C-F6041F9CE4D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,5 +33,19 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {79826BE9-CDD1-4EBA-A3E9-3FCA372059D8}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\..\..\Users\Alexandr\Documents\Arduino\libraries\Adafruit-MCP23017-Arduino-Library-master\Adafruit-MCP23017-Arduino-Library-master-2.2.0.vcxitems*{20f2def9-b443-4047-9ff4-1d36f9bd4ee8}*SharedItemsImports = 9
+		..\..\..\Users\Alexandr\Documents\Arduino\libraries\Adafruit_Unified_Sensor\Adafruit_Unified_Sensor-1.1.6.vcxitems*{7531e745-115f-4733-ad1c-f6041f9ce4d9}*SharedItemsImports = 9
+		..\..\..\Users\Alexandr\Documents\Arduino\libraries\LiquidCrystal_I2C-1.1.2\LiquidCrystal_I2C-1.1.2-1.1.2.vcxitems*{889efdd8-a0e5-4da1-b7de-be078ab4f7db}*SharedItemsImports = 9
+		..\..\..\Users\Alexandr\Documents\Arduino\libraries\Adafruit_MCP23008_library-2.1.0\Adafruit_MCP23008_library-2.1.0-2.1.0.vcxitems*{91073377-fe92-4cb9-8eb1-b34c4cf6a6bf}*SharedItemsImports = 9
+		..\..\..\Users\Alexandr\Documents\Arduino\libraries\DS3231-1.1.0\DS3231-1.1.0-1.1.0.vcxitems*{9d0f9427-2e7b-4d54-ac4d-4eb561e8572b}*SharedItemsImports = 9
+		..\..\..\Users\Alexandr\Documents\Arduino\libraries\Adafruit-MCP23017-Arduino-Library-master\Adafruit-MCP23017-Arduino-Library-master-2.2.0.vcxitems*{c5f80730-f44f-4478-bdae-6634efc2ca88}*SharedItemsImports = 4
+		..\..\..\Users\Alexandr\Documents\Arduino\libraries\Adafruit_BME280_Library\Adafruit_BME280_Library-2.2.2.vcxitems*{c5f80730-f44f-4478-bdae-6634efc2ca88}*SharedItemsImports = 4
+		..\..\..\Users\Alexandr\Documents\Arduino\libraries\Adafruit_MCP23008_library-2.1.0\Adafruit_MCP23008_library-2.1.0-2.1.0.vcxitems*{c5f80730-f44f-4478-bdae-6634efc2ca88}*SharedItemsImports = 4
+		..\..\..\Users\Alexandr\Documents\Arduino\libraries\Adafruit_Unified_Sensor\Adafruit_Unified_Sensor-1.1.6.vcxitems*{c5f80730-f44f-4478-bdae-6634efc2ca88}*SharedItemsImports = 4
+		..\..\..\Users\Alexandr\Documents\Arduino\libraries\DS3231-1.1.0\DS3231-1.1.0-1.1.0.vcxitems*{c5f80730-f44f-4478-bdae-6634efc2ca88}*SharedItemsImports = 4
+		..\..\..\Users\Alexandr\Documents\Arduino\libraries\LiquidCrystal_I2C-1.1.2\LiquidCrystal_I2C-1.1.2-1.1.2.vcxitems*{c5f80730-f44f-4478-bdae-6634efc2ca88}*SharedItemsImports = 4
+		..\..\..\Users\Alexandr\Documents\Arduino\libraries\Adafruit_BME280_Library\Adafruit_BME280_Library-2.2.2.vcxitems*{d4c840ce-fdb3-4797-aa74-b3ccf3607ba2}*SharedItemsImports = 9
 	EndGlobalSection
 EndGlobal

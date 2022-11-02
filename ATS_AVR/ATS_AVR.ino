@@ -4,12 +4,16 @@
  Author:	Alexandr Kobelchak
 */
 
+#include <Adafruit_Sensor.h>
+#include <Adafruit_MCP23008.h>
+#include <DS3231.h>
+#include <LiquidCrystal_I2C.h>
 #include "stdafx.h"
 #include "Source.h"
 #include "EnergyState.h"
 #include "Plot.h"
 
-int g_lcdWidth = 16;
+int g_lcdWidth = 8;
 const int g_lcgHeight = 2;
 
 const int g_time_value = 34285; //Preload timer value (34285 for 0.5 seconds)
@@ -82,7 +86,7 @@ void loop() {
             for (int i = 0; i < 4; ++i) {
                 g_CommandBlock.digitalWrite(i, 0);
             }
-            g_CommandBlock.digitalWrite(mode++, 1);
+            //g_CommandBlock.digitalWrite(mode++, 1);
             if (mode == 4) mode = 0;
             
             counter = 0;
