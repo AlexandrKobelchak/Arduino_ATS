@@ -8,3 +8,4 @@
 #include <avr/sleep.h>
 #include <avr/wdt.h>
 #include <Arduino.h>
+#include <stdint-gcc.h>

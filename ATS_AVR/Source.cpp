@@ -1,3 +1,4 @@
+#include "Source.h"
 #include <LiquidCrystal_I2C.h>
 #include <DS3231.h>
 #include <avr/io.h>
@@ -21,6 +22,18 @@ void blinkLed() {
         PORTB &= ~(1 << 5);
 }
 
+void  initInput() {
+
+    pinMode(2, INPUT_PULLUP);
+    pinMode(3, INPUT_PULLUP);
+    pinMode(4, INPUT_PULLUP);
+    pinMode(5, INPUT_PULLUP);
+    pinMode(6, INPUT_PULLUP);
+    pinMode(7, INPUT_PULLUP);
+    pinMode(8, INPUT_PULLUP);
+    pinMode(9, INPUT_PULLUP);
+}
+
 void initCommandBlock() {
 
     g_CommandBlock.begin(0);      // use default address 0
@@ -28,6 +41,11 @@ void initCommandBlock() {
     g_CommandBlock.pinMode(1, OUTPUT);
     g_CommandBlock.pinMode(2, OUTPUT);
     g_CommandBlock.pinMode(3, OUTPUT);
+
+    for (int i = 0; i < 4; ++i) {
+
+        g_CommandBlock.digitalWrite(i, 0);
+    }
 }
 
 void initLcd() {
@@ -57,6 +75,18 @@ void initPlot() {
     lcd.createChar(5, row5);
     lcd.createChar(6, row6);
     lcd.createChar(7, row7);
+}
+
+uint8_t getInputState() {
+
+    return ~(digitalRead(2)
+        | digitalRead(3) << 1
+        | digitalRead(4) << 2
+        | digitalRead(5) << 3
+        | digitalRead(6) << 4
+        | digitalRead(7) << 5
+        | digitalRead(8) << 6
+        | digitalRead(9) << 7);
 }
 
 void showAnimation() {
@@ -128,4 +158,13 @@ void showTime() {
     lcd.setCursor(0, 0);
     lcd.setBacklight(255);
     lcd.print(str);
+}
+
+void setCommandBlockOn(commadBlockOut pin) {
+
+    g_CommandBlock.digitalWrite(pin, 1);
+}
+void setCommandBlockOff(commadBlockOut pin) {
+    
+    g_CommandBlock.digitalWrite(pin, 0);
 }
