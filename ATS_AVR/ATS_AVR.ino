@@ -86,7 +86,7 @@ void loop() {
 		//this code for remove!!! Test command executed
 
 
-		if (getInputState() & INPUT_PIN_1) {
+		if (getInputState() & INPUT_PIN_5_NOT_USED) {
 
 			setCommandBlockOn(commadBlockOut::RELEY_LITE_ON_OFF);
 		}
@@ -95,7 +95,7 @@ void loop() {
 			setCommandBlockOff(commadBlockOut::RELEY_LITE_ON_OFF);
 		}
 
-		if (getInputState() & INPUT_PIN_2) {
+		if (getInputState() & INPUT_PIN_6_NOT_USED) {
 
 			setCommandBlockOn(commadBlockOut::RELEY_SWITCH_ON_OFF);
 		}
@@ -103,7 +103,7 @@ void loop() {
 
 			setCommandBlockOff(commadBlockOut::RELEY_SWITCH_ON_OFF);
 		}
-		if (getInputState() & INPUT_PIN_3) {
+		if (getInputState() & INPUT_PIN_7_NOT_USED) {
 
 			setCommandBlockOn(commadBlockOut::RELEY_ENGINE_START);
 		}
@@ -111,7 +111,7 @@ void loop() {
 
 			setCommandBlockOff(commadBlockOut::RELEY_ENGINE_START);
 		}
-		if (getInputState() & INPUT_PIN_4) {
+		if (getInputState() & INPUT_PIN_8_NOT_USED) {
 
 			setCommandBlockOn(commadBlockOut::RELEY_ENGINE_OFF);
 		}
